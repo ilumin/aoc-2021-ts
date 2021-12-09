@@ -30,7 +30,7 @@ describe("Day 1", () => {
     });
   });
 
-  it("day1 answer", () => {
+  it("day1 answer#1", () => {
     const input = readFile("./src/day1/day1.input.txt");
     const result = countIncrease(input);
     expect(result).toEqual(1477);
