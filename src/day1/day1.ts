@@ -11,22 +11,19 @@ export const readInput = (fileName: string): number[] => {
   return content.split("\n").map((x) => parseInt(x, 10));
 };
 
-export const countIncrease = (input: number[], head?: number): number => {
-  const [first, ...rest] = input;
-  const counter = first > head ? 1 : 0;
-
-  return rest.length <= 0 ? counter : counter + countIncrease(rest, first);
+type countIncreaseOptions = {
+  input: number[];
+  measurementSize?: number;
+  head?: number | undefined;
 };
 
-export const advanceCounterIncrease = (
-  input: number[],
-  head?: number
-): number => {
-  const first = input.slice(0, MEASUREMENT_SIZE).reduce((a, b) => a + b);
+export const countIncrease = (options: countIncreaseOptions): number => {
+  const { input = [], measurementSize = MEASUREMENT_SIZE, head } = options;
+  const first = input.slice(0, measurementSize).reduce((a, b) => a + b);
   const [_, ...rest] = input;
   const counter = first > head ? 1 : 0;
 
-  return rest.length < MEASUREMENT_SIZE
+  return rest.length <= 0
     ? counter
-    : counter + advanceCounterIncrease(rest, first);
+    : counter + countIncrease({ input: rest, head: first, measurementSize });
 };
