@@ -1,5 +1,5 @@
 import type { DirectionTuple } from "./day2";
-import { Direction, readInput, getFinalPosition } from "./day2";
+import { Direction, readInput, getBasicFinalPosition } from "./day2";
 
 describe("Day 2", () => {
   describe("readInput", () => {
@@ -12,24 +12,24 @@ describe("Day 2", () => {
     });
   });
 
-  describe("getFinalPosition", () => {
+  describe("gteBasicPosition", () => {
     it("should return [0, 0] for empty input", () => {
       const input = [];
-      const finalPosition = getFinalPosition(input);
+      const finalPosition = getBasicFinalPosition(input);
 
       expect(finalPosition).toEqual([0, 0]);
     });
 
     it("should return [1, 0] for [[forward, 1]]", () => {
       const input: DirectionTuple[] = [[Direction.FORWARD, 1]];
-      const finalPosition = getFinalPosition(input);
+      const finalPosition = getBasicFinalPosition(input);
 
       expect(finalPosition).toEqual([1, 0]);
     });
 
     it("should return [0, 1] for [[down, 1]]", () => {
       const input: DirectionTuple[] = [[Direction.DOWN, 1]];
-      const finalPosition = getFinalPosition(input);
+      const finalPosition = getBasicFinalPosition(input);
 
       expect(finalPosition).toEqual([0, 1]);
     });
@@ -39,7 +39,7 @@ describe("Day 2", () => {
         [Direction.DOWN, 1],
         [Direction.UP, 1],
       ];
-      const finalPosition = getFinalPosition(input);
+      const finalPosition = getBasicFinalPosition(input);
 
       expect(finalPosition).toEqual([0, 0]);
     });
@@ -49,7 +49,7 @@ describe("Day 2", () => {
         [Direction.DOWN, 1],
         [Direction.FORWARD, 1],
       ];
-      const finalPosition = getFinalPosition(input);
+      const finalPosition = getBasicFinalPosition(input);
 
       expect(finalPosition).toEqual([1, 1]);
     });
@@ -58,7 +58,7 @@ describe("Day 2", () => {
   it("day2 answer#1", () => {
     const inputFile = "./src/day2/day2.input.txt";
     const input = readInput(inputFile);
-    const [x, y] = getFinalPosition(input);
+    const [x, y] = getBasicFinalPosition(input);
 
     expect(x * y).toEqual(2073315);
   });

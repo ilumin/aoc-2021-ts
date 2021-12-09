@@ -21,7 +21,7 @@ export const readInput = (file: string): DirectionTuple[] => {
   });
 };
 
-export const getFinalPosition = (directions?: DirectionTuple[]): Point => {
+export const getBasicFinalPosition = (directions?: DirectionTuple[]): Point => {
   const originPoint: Point = [0, 0];
   if (!directions || directions.length <= 0) return originPoint;
 
