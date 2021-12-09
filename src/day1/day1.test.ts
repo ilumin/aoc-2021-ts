@@ -1,4 +1,4 @@
-import { readInput, countIncrease } from "./day1";
+import { readInput, countIncrease, advanceCounterIncrease } from "./day1";
 
 describe("Day 1", () => {
   describe("readFile", () => {
@@ -30,9 +30,35 @@ describe("Day 1", () => {
     });
   });
 
+  describe("advanceCounterIncrease", () => {
+    it("should return 0 for input ([1,2,3])", () => {
+      const input = [1, 2, 3];
+      const result = advanceCounterIncrease(input);
+      expect(result).toEqual(0);
+    });
+
+    it("should return 1 for input ([1,2,3,4])", () => {
+      const input = [1, 2, 3, 4];
+      const result = advanceCounterIncrease(input);
+      expect(result).toEqual(1);
+    });
+
+    it("should return 0 for input ([1,2,3,1])", () => {
+      const input = [1, 2, 3, 1];
+      const result = advanceCounterIncrease(input);
+      expect(result).toEqual(0);
+    });
+  });
+
   it("day1 answer#1", () => {
     const input = readInput("./src/day1/day1.input.txt");
     const result = countIncrease(input);
     expect(result).toEqual(1477);
+  });
+
+  it("day1 answer#2", () => {
+    const input = readInput("./src/day1/day1.input.txt");
+    const result = advanceCounterIncrease(input);
+    expect(result).toEqual(1523);
   });
 });
