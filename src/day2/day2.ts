@@ -41,3 +41,24 @@ export const getBasicFinalPosition = (directions?: DirectionTuple[]): Point => {
     }
   }, originPoint);
 };
+
+export const getAdvanceFinalPosition = (
+  directions?: DirectionTuple[],
+  aim: number = 0,
+  position: Point = [0, 0]
+): Point => {
+  if (directions.length <= 0) return position;
+
+  const [x, y] = position;
+  const [[direction, distance], ...rest] = directions;
+  if (direction === Direction.FORWARD) {
+    return getAdvanceFinalPosition(rest, aim, [
+      x + distance,
+      y + aim * distance,
+    ]);
+  }
+
+  const updateAim =
+    direction === Direction.DOWN ? aim + distance : aim - distance;
+  return getAdvanceFinalPosition(rest, updateAim, [x, y]);
+};
