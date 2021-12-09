@@ -4,15 +4,14 @@
 
 import { readFileSync } from "fs";
 
-export const readFile = (fileName: string): string[] => {
+export const readInput = (fileName: string): number[] => {
   const content = readFileSync(fileName, "utf8");
-  return content.split("\n");
+  return content.split("\n").map((x) => parseInt(x, 10));
 };
 
-export const countIncrease = (input: string[], head?: number): number => {
+export const countIncrease = (input: number[], head?: number): number => {
   const [first, ...rest] = input;
-  const parseFirst = parseInt(first, 10);
-  const counter = parseFirst > head ? 1 : 0;
+  const counter = first > head ? 1 : 0;
 
-  return rest.length <= 0 ? counter : counter + countIncrease(rest, parseFirst);
+  return rest.length <= 0 ? counter : counter + countIncrease(rest, first);
 };
