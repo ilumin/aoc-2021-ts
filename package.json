@@ -3,5 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "O Teerasak Vichadee <iolumin@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^27.4.3"
+  },
+  "scripts": {
+    "test": "jest"
+  }
 }
