@@ -1,13 +1,12 @@
 /**
  * aoc 2021/day1 -> https://adventofcode.com/2021/day/1
  */
-
-import { readFileSync } from "fs";
+import { readFile } from "./../utils";
 
 const MEASUREMENT_SIZE = 3;
 
 export const readInput = (fileName: string): number[] => {
-  const content = readFileSync(fileName, "utf8");
+  const content = readFile(fileName);
   return content.split("\n").map((x) => parseInt(x, 10));
 };
 
